@@ -16,7 +16,14 @@
       </header>
 
       <main>
-        <div id="board"></div>
+        <div id="board">
+          <div class="scene">
+            <a id="btn-start">Start</a>
+          </div>
+          <div class="scene">
+            <a id="btn-second">2nd Scene</a>
+          </div>
+        </div>
         <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
         <div id="player"></div>
       </main>
@@ -26,6 +33,7 @@
       </footer>
     </div>
 
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
     <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -51,7 +59,7 @@
 
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
-        event.target.playVideo();
+        // event.target.playVideo();
       }
 
       // 5. The API calls this function when the player's state changes.
@@ -60,19 +68,38 @@
       var done = false;
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(pauseVideo, 6000);
+          setTimeout(triggerScene, 6000);
           done = true;
         }
+      }
+      function playVideo() {
+        player.playVideo();
       }
       function pauseVideo() {
         player.pauseVideo();
       }
-    </script>
 
-    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
-    <script>
+      function hideBoard() {
+        $('#board').hide();
+      }
+      function showBoard() {
+        $('#board').show();
+      }
+      function endScene(el) {
+        $(el).parent('.scene').hide();
+      }
+
+      function triggerScene() {
+        pauseVideo();
+        showBoard();
+      }
+
       $(document).ready(function () {
-
+        $('#btn-start').click(function () {
+          hideBoard();
+          playVideo();
+          endScene(this);
+        })
       })
     </script>
   </body>
