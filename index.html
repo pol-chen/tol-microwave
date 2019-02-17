@@ -6,13 +6,6 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Merriweather" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
-
-    <script>
-      $(document).ready(function () {
-
-      })
-    </script>
   </head>
 
   <body>
@@ -22,14 +15,16 @@
         <p class="desc">Microwave ovens cook food incredibly fast, warming up refrigerated leftovers in minutes or less. But how does this great invention work? And how is it different from the traditional ovens?</p>
       </header>
 
-      <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-      <div id="player"></div>
+      <main>
+        <div id="board"></div>
+        <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+        <div id="player"></div>
+      </main>
 
       <footer>
         <p class="copyright">&copy; 2019. A Work Crafted by Yihong Shi &amp; Canhai Chen</p>
       </footer>
     </div>
-
 
     <script>
       // 2. This code loads the IFrame Player API code asynchronously.
@@ -72,6 +67,13 @@
       function pauseVideo() {
         player.pauseVideo();
       }
+    </script>
+
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script>
+      $(document).ready(function () {
+
+      })
     </script>
   </body>
 </html>

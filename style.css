@@ -81,8 +81,24 @@ p.desc {
   line-height: 23px;
 }
 
-#player {
+main {
+  position: relative;
+  width: 100%;
+  height: 540px;
   margin: 24px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#board {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #FAEFD0;
+  opacity: .5;
+}
+
+#player {
 }
 
 footer {
