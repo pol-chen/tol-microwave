@@ -51,4 +51,42 @@ table {
 
 html {
   font-family: Helvetica, Arial, sans-serif;
+  background: #FFFBF0;
+  color: #262626;
+  font-family: 'Merriweather', serif;
+}
+
+.wrapper {
+  width: 840px;
+  margin: 0 auto;
+}
+
+header {
+  margin-top: 72px;
+}
+
+h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 36px;
+  color: #000000;
+}
+
+h1 span {
+  color: #26A69A;
+}
+
+p.desc {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 23px;
+}
+
+#player {
+  margin: 24px 0;
+}
+
+footer {
+  margin: 24px 0;
+  font-size: 12px;
+  color: #888888;
 }
