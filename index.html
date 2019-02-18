@@ -36,8 +36,8 @@
           <div id="scene-answer" class="scene">
             <h2>Justify your answer</h2>
             <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
-            <textarea rows="5" placeholder="Explain why you think your answer is right."></textarea>
-            <a class="btn-continue">Check It Out</a>
+            <textarea rows="4" placeholder="Explain why you think your answer is right."></textarea>
+            <a class="btn-continue"><i class="fas fa-magic"></i>Check It Out</a>
           </div>
           <div id="scene-question" class="scene">
             <h2>Which one is your pasta?</h2>
@@ -53,7 +53,7 @@
                 <img src="" alt="">
               </div>
             </div>
-            <a class="btn-continue">Continue</a>
+            <a class="btn-continue"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
           <div id="scene-timer" class="scene">
             <div class="icon">
@@ -61,7 +61,7 @@
             </div>
             <h2>Heating...</h2>
             <p>Your pasta is on the way!</p>
-            <a class="btn-continue">Continue</a>
+            <a class="btn-continue"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
           <div id="scene-desc" class="scene">
             <h2>Heating Pasta</h2>
@@ -74,7 +74,7 @@
                 <img src="" alt="">
               </div>
             </div>
-            <a class="btn-continue">Continue</a>
+            <a class="btn-continue"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
           <div id="scene-title" class="scene">
             <div class="icon">
@@ -82,7 +82,7 @@
             </div>
             <h2>Experiment Time!!!</h2>
             <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
-            <a class="btn-continue">Continue</a>
+            <a class="btn-continue"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
         </div>
         <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
@@ -149,8 +149,10 @@
       function startScene(scene) {
         $(scene).fadeIn();
       }
-      function endScene(el) {
-        $(el).parent('.scene').fadeOut();
+      function continueScene(el, next) {
+        $(el).parent('.scene').fadeOut(function () {
+          $(next).fadeIn();
+        });
       }
 
       function triggerScene() {
@@ -169,7 +171,8 @@
         $('.btn-start').click(function () {
             // hideBoard();
             // playVideo();
-          endScene(this);
+          continueScene(this, '#scene-answer');
+          // startScene('#scene-title');
         })
       })
     </script>
