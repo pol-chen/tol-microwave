@@ -146,6 +146,7 @@ main {
 }
 
 .scene h2 {
+  width: 540px;
   margin-bottom: 24px;
   font-family: 'Lobster', cursive;
   font-size: 36px;
