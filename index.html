@@ -67,14 +67,14 @@
           <div id="scene-question-pasta" class="scene scene-question">
             <h2>Your Pasta Is Ready!</h2>
             <p>After heating with the same amount of time, which result do you expect?</p>
-            <div class="gallery select">
-              <div class="frame option">
+            <div class="gallery select" data-target="#scene-answer-pasta">
+              <div class="frame option" data-next="#scene-wrong-pasta">
                 <img src="" alt="">
               </div>
-              <div class="frame option">
+              <div class="frame option" data-next="#scene-correct-pasta">
                 <img src="" alt="">
               </div>
-              <div class="frame option">
+              <div class="frame option" data-next="#scene-wrong-pasta">
                 <img src="" alt="">
               </div>
             </div>
@@ -84,7 +84,7 @@
             <h2>Justify Your Answer</h2>
             <p>Why do you choose the option?</p>
             <textarea class="input-answer" rows="4" placeholder="Explain why you think your answer is right."></textarea>
-            <a class="btn-continue btn-disabled" data-next="#scene-correct-pasta"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+            <a class="btn-continue btn-disabled" data-next="#scene-wrong-pasta"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
           <div id="scene-correct-pasta" class="scene scene-feedback">
             <div class="icon">
@@ -135,14 +135,14 @@
           <div id="scene-question-pizza" class="scene scene-question">
             <h2>Your Pizza Is Ready!</h2>
             <p>After heating with the same amount of time, which result do you expect?</p>
-            <div class="gallery select">
-              <div class="frame option">
+            <div class="gallery select" data-target="#scene-answer-pizza">
+              <div class="frame option" data-next="#scene-wrong-pizza">
                 <img src="" alt="">
               </div>
-              <div class="frame option">
+              <div class="frame option" data-next="#scene-wrong-pizza">
                 <img src="" alt="">
               </div>
-              <div class="frame option">
+              <div class="frame option" data-next="#scene-correct-pizza">
                 <img src="" alt="">
               </div>
             </div>
@@ -152,7 +152,7 @@
             <h2>Justify Your Answer</h2>
             <p>Why do you choose the option?</p>
             <textarea class="input-answer" rows="4" placeholder="Explain why you think your answer is right."></textarea>
-            <a class="btn-continue btn-disabled" data-next="#scene-correct-pizza"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+            <a class="btn-continue btn-disabled" data-next="#scene-wrong-pizza"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
           <div id="scene-correct-pizza" class="scene scene-feedback">
             <div class="icon">
@@ -183,7 +183,7 @@
           <div id="scene-question-1" class="scene scene-question">
             <h2>Question 1</h2>
             <p>Microwaves are electric waves that could NOT penetrate?</p>
-            <div class="gallery gallery-v select">
+            <div class="gallery gallery-v select" data-target="#scene-question-1">
               <div class="frame option" data-next="#scene-wrong-1">
                 <p>A. Food</p>
               </div>
@@ -219,7 +219,7 @@
           <div id="scene-question-2" class="scene scene-question">
             <h2>Question 2</h2>
             <p>How does the microwave heat the food?</p>
-            <div class="gallery gallery-v select">
+            <div class="gallery gallery-v select" data-target="#scene-question-2">
               <div class="frame option" data-next="#scene-correct-2">
                 <p>A. Activating the water molecules in the food.</p>
               </div>
@@ -255,7 +255,7 @@
           <div id="scene-question-3" class="scene scene-question">
             <h2>Question 3</h2>
             <p>In what order does the microwave heat the food?</p>
-            <div class="gallery gallery-v select">
+            <div class="gallery gallery-v select" data-target="#scene-question-3">
               <div class="frame option" data-next="#scene-wrong-3">
                 <p>A. Heat the inside first then the outside.</p>
               </div>
@@ -423,7 +423,7 @@
 
       $(document).ready(function () {
         showBoard();
-        $('#scene-answer-pizza').show();
+        $('#scene-question-pizza').show();
 
         $('.btn-start').click(function () {
           // hideBoard();
@@ -443,10 +443,13 @@
           $(this).addClass('option-selected');
         })
         $('.select .option').click(function () {
-          var next = $(this).data('next');
           var $btn = $(this).parent('.select').parent('.scene').find('.btn-continue');
           $btn.removeClass('btn-disabled');
-          $btn.data('next', next);
+
+          var next = $(this).data('next');
+          var target = $(this).parent('.select').data('target');
+          var $btnTarget = $(target).find('.btn-continue');
+          $btnTarget.data('next', next);
         })
         $('.input-answer').on('change keyup paste', function() {
           var $btn = $(this).parent('.scene').find('.btn-continue');
