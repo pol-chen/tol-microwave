@@ -62,12 +62,12 @@
             </div>
             <h2 class="heating">Heating</h2>
             <p>Your pasta is on the way!</p>
-            <a class="btn-continue btn-disabled" data-next="#scene-question-pasta"><i class="fas fa-clock"></i>Heating</a>
+            <a class="btn-continue btn-hidden" data-next="#scene-question-pasta"><i class="fas fa-clock"></i>Heating</a>
           </div>
           <div id="scene-question-pasta" class="scene scene-question">
             <h2>Your Pasta Is Ready!</h2>
             <p>After heating with the same amount of time, which result do you expect?</p>
-            <div class="gallery">
+            <div class="gallery select">
               <div class="frame option">
                 <img src="" alt="">
               </div>
@@ -78,7 +78,7 @@
                 <img src="" alt="">
               </div>
             </div>
-            <a class="btn-continue" data-next="#scene-answer-pasta"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+            <a class="btn-continue btn-disabled" data-next="#scene-answer-pasta"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
           <div id="scene-answer-pasta" class="scene scene-answer">
             <h2>Justify Your Answer</h2>
@@ -114,12 +114,12 @@
             </div>
             <h2 class="heating">Heating</h2>
             <p>Your pizza is on the way!</p>
-            <a class="btn-continue btn-disabled" data-next="#scene-question-pizza"><i class="fas fa-clock"></i>Heating</a>
+            <a class="btn-continue btn-hidden" data-next="#scene-question-pizza"><i class="fas fa-clock"></i>Heating</a>
           </div>
           <div id="scene-question-pizza" class="scene scene-question">
             <h2>Your Pizza Is Ready!</h2>
             <p>After heating with the same amount of time, which result do you expect?</p>
-            <div class="gallery">
+            <div class="gallery select">
               <div class="frame option">
                 <img src="" alt="">
               </div>
@@ -130,7 +130,7 @@
                 <img src="" alt="">
               </div>
             </div>
-            <a class="btn-continue" data-next="#scene-answer-pizza"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+            <a class="btn-continue btn-disabled" data-next="#scene-answer-pizza"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
           <div id="scene-answer-pizza" class="scene scene-answer">
             <h2>Justify Your Answer</h2>
@@ -151,7 +151,7 @@
           <div id="scene-question-1" class="scene scene-question">
             <h2>Question 1</h2>
             <p>Microwaves are electric waves that could NOT penetrate?</p>
-            <div class="gallery gallery-v">
+            <div class="gallery gallery-v select">
               <div class="frame option" data-next="#scene-wrong-1">
                 <p>A. Food</p>
               </div>
@@ -165,7 +165,7 @@
                 <p>D. Metal</p>
               </div>
             </div>
-            <a class="btn-continue" data-next="#scene-wrong-1"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+            <a class="btn-continue btn-disabled" data-next="#scene-wrong-1"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
           <div id="scene-correct-1" class="scene scene-feedback">
             <div class="icon">
@@ -187,7 +187,7 @@
           <div id="scene-question-2" class="scene scene-question">
             <h2>Question 2</h2>
             <p>How does the microwave heat the food?</p>
-            <div class="gallery gallery-v">
+            <div class="gallery gallery-v select">
               <div class="frame option" data-next="#scene-correct-2">
                 <p>A. Activating the water molecules in the food.</p>
               </div>
@@ -201,7 +201,7 @@
                 <p>D. Activating the proteins in the food.</p>
               </div>
             </div>
-            <a class="btn-continue" data-next="#scene-wrong-2"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+            <a class="btn-continue btn-disabled" data-next=""><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
           <div id="scene-correct-2" class="scene scene-feedback">
             <div class="icon">
@@ -223,7 +223,7 @@
           <div id="scene-question-3" class="scene scene-question">
             <h2>Question 3</h2>
             <p>In what order does the microwave heat the food?</p>
-            <div class="gallery gallery-v">
+            <div class="gallery gallery-v select">
               <div class="frame option" data-next="#scene-wrong-3">
                 <p>A. Heat the inside first then the outside.</p>
               </div>
@@ -237,7 +237,7 @@
                 <p>D. Heat in a random order.</p>
               </div>
             </div>
-            <a class="btn-continue" data-next="#scene-wrong-3"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+            <a class="btn-continue btn-disabled" data-next=""><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
           <div id="scene-correct-3" class="scene scene-feedback">
             <div class="icon">
@@ -281,7 +281,7 @@
         player = new YT.Player('player', {
           height: '540',
           width: '840',
-          videoId: 'YRzzWCvo9UM',
+          videoId: '1IEW35GW-nc',
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -310,7 +310,7 @@
       // when the time changes, this will be called.
       function onProgress(currentTime) {
         console.log(currentTime);
-        if(currentTime >= 10 && currentTime < 10.1 && !showingBoard) {
+        if(currentTime >= 120 && currentTime < 120.1 && !showingBoard) {
           console.log("Trigger");
           triggerScenePizza();
         }
@@ -384,7 +384,7 @@
 
       $(document).ready(function () {
         showBoard();
-        $('#scene-title-practice').show();
+        $('#scene-start').show();
 
         $('.btn-start').click(function () {
           // hideBoard();
@@ -392,7 +392,9 @@
           // startScene('#scene-title');
         })
         $('.btn-continue').click(function () {
-          continueScene(this);
+          if (!$(this).hasClass('btn-disabled')) {
+            continueScene(this);
+          }
         })
         $('.btn-end').click(function () {
           endScene(this);
@@ -401,9 +403,10 @@
           $(this).parent('.gallery').find('.option').removeClass('option-selected');
           $(this).addClass('option-selected');
         })
-        $('.gallery-v .option').click(function () {
+        $('.select .option').click(function () {
           var next = $(this).data('next');
-          var $btn = $(this).parent('.gallery-v').parent('.scene').find('.btn-continue');
+          var $btn = $(this).parent('.select').parent('.scene').find('.btn-continue');
+          $btn.removeClass('btn-disabled');
           $btn.data('next', next);
         })
       })

@@ -124,8 +124,14 @@ main {
 .scene a:hover {
   background: #117B71;
 }
-.scene a.btn-disabled {
+.scene a.btn-hidden {
   display: none;
+}
+.scene a.btn-disabled {
+  /* display: none; */
+  background: #DDDDDD;
+  cursor: not-allowed;
+  user-select: none;
 }
 .scene a i {
   padding-right: 6px;
