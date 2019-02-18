@@ -33,13 +33,13 @@
             <p>You have completed the course. Now you can show off to your friends how a microwave oven works!</p>
             <a class="btn-share"><i class="fas fa-share-alt"></i>Share</a>
           </div>
-          <div id="scene-answer" class="scene">
+          <div id="scene-answer" class="scene scene-answer">
             <h2>Justify your answer</h2>
             <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
             <textarea rows="4" placeholder="Explain why you think your answer is right."></textarea>
             <a class="btn-end"><i class="fas fa-magic"></i>Check It Out</a>
           </div>
-          <div id="scene-question" class="scene">
+          <div id="scene-question" class="scene scene-question">
             <h2>Which one is your pasta?</h2>
             <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
             <div class="gallery">
@@ -55,15 +55,15 @@
             </div>
             <a class="btn-continue" data-next="#scene-answer"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
-          <div id="scene-timer" class="scene">
+          <div id="scene-timer" class="scene scene-timer">
             <div class="icon">
               <i class="far fa-clock"></i>
             </div>
-            <h2>Heating...</h2>
+            <h2 class="heating">Heating</h2>
             <p>Your pasta is on the way!</p>
-            <a class="btn-continue" data-next="#scene-question"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+            <a class="btn-continue btn-disabled" data-next="#scene-question"><i class="fas fa-clock"></i>Heating</a>
           </div>
-          <div id="scene-desc" class="scene">
+          <div id="scene-desc" class="scene scene-desc">
             <h2>Heating Pasta</h2>
             <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
             <div class="gallery">
@@ -76,7 +76,7 @@
             </div>
             <a class="btn-continue" data-next="#scene-timer"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
-          <div id="scene-title" class="scene">
+          <div id="scene-title" class="scene scene-title">
             <div class="icon">
               <i class="far fa-grin"></i>
             </div>
@@ -153,9 +153,16 @@
       function startScene(scene) {
         $(scene).fadeIn();
       }
-      function continueScene(el, next) {
+      function continueScene(el) {
+        var next = $(el).data('next');
         $(el).parent('.scene').fadeOut(function () {
-          $(next).fadeIn();
+          $(next).fadeIn(function () {
+            if (next.includes('scene-timer')) {
+              var audio = new Audio('sound.mov');
+              audio.play();
+              setTimeout(continueScene, 4000, $(next).find('.btn-continue'));
+            }
+          });
         });
       }
       function endScene(el) {
@@ -176,7 +183,7 @@
 
       $(document).ready(function () {
         showBoard();
-        $('#scene-start').show();
+        $('#scene-desc').show();
 
         $('.btn-start').click(function () {
           // hideBoard();
@@ -184,8 +191,7 @@
           // startScene('#scene-title');
         })
         $('.btn-continue').click(function () {
-          var next = $(this).data('next');
-          continueScene(this, next);
+          continueScene(this);
         })
         $('.btn-end').click(function () {
           endScene(this);
