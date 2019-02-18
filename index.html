@@ -132,7 +132,7 @@
           setTimeout(triggerScenePizza, 6000);
           done = true;
         } else if (event.data == YT.PlayerState.ENDED) {
-          triggerSceneEnd();
+          setTimeout(triggerSceneEnd, 500);
         }
       }
       function playVideo() {
@@ -143,6 +143,7 @@
       }
 
       function hideBoard() {
+        $('.scene').hide();
         $('#board').hide();
       }
       function showBoard() {
@@ -178,12 +179,10 @@
         $('#scene-start').show();
 
         $('.btn-start').click(function () {
-            // hideBoard();
-            // playVideo();
-          continueScene(this, '#scene-answer');
+          // hideBoard();
+          // playVideo();
           // startScene('#scene-title');
         })
-
         $('.btn-continue').click(function () {
           var next = $(this).data('next');
           continueScene(this, next);
