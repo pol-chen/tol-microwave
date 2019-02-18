@@ -141,6 +141,10 @@ main {
   font-size: 120px;
 }
 
+.scene .icon-alert i {
+  color: #A63E26;
+}
+
 .scene h2 {
   margin-bottom: 24px;
   font-family: 'Lobster', cursive;
@@ -181,10 +185,27 @@ main {
 
 .scene .gallery .option {
   border: 3px solid #FFFBF0;
+  cursor: pointer;
 }
 
 .scene .gallery .option-selected {
   border: 3px solid #26A69A;
+}
+
+.scene .gallery .option p {
+  width: 100%;
+  margin: 0;
+  padding: 6px;
+}
+
+.scene .gallery-v {
+  flex-direction: column;
+  height: auto;
+}
+
+.scene .gallery-v .frame {
+  width: 100%;
+  margin: 3px 0;
 }
 
 .scene textarea {

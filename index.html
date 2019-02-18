@@ -84,6 +84,50 @@
             <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
             <a class="btn-continue" data-next="#scene-desc"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
+
+          <div id="scene-title-practice" class="scene scene-title">
+            <div class="icon">
+              <i class="far fa-file-alt"></i>
+            </div>
+            <h2>Practice Time!!!</h2>
+            <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
+            <a class="btn-continue" data-next="#scene-question-1"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+          </div>
+          <div id="scene-question-1" class="scene scene-question">
+            <h2>Which one is your pasta?</h2>
+            <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
+            <div class="gallery gallery-v">
+              <div class="frame option">
+                <p>A. Activating the water molecules in the food.</p>
+              </div>
+              <div class="frame option">
+                <p>B. Heat the air inside the microwave oven.</p>
+              </div>
+              <div class="frame option">
+                <p>C. Heat the container of the food and then conduct the heat to the food.</p>
+              </div>
+              <div class="frame option">
+                <p>D. Activating the proteins in the food.</p>
+              </div>
+            </div>
+            <a class="btn-continue" data-next="#scene-wrong-1"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+          </div>
+          <div id="scene-correct-1" class="scene scene-feedback">
+            <div class="icon">
+              <i class="far fa-check-circle"></i>
+            </div>
+            <h2>Correct!</h2>
+            <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
+            <a class="btn-continue" data-next="#scene-end"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+          </div>
+          <div id="scene-wrong-1" class="scene scene-feedback">
+            <div class="icon icon-alert">
+              <i class="far fa-times-circle"></i>
+            </div>
+            <h2>Incorrect</h2>
+            <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
+            <a class="btn-continue" data-next="#scene-end"><i class="fas fa-arrow-circle-right"></i>Continue</a>
+          </div>
         </div>
         <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
         <div id="player"></div>
@@ -132,7 +176,7 @@
           setTimeout(triggerScenePizza, 6000);
           done = true;
         } else if (event.data == YT.PlayerState.ENDED) {
-          setTimeout(triggerSceneEnd, 500);
+          setTimeout(triggerScenePractice, 100);
         }
       }
       function playVideo() {
@@ -175,6 +219,10 @@
         pauseVideo();
         showBoard();
         startScene('#scene-title');
+      }
+      function triggerScenePractice() {
+        showBoard();
+        startScene('#scene-title-practice');
       }
       function triggerSceneEnd() {
         showBoard();
