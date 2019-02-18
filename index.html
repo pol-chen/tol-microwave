@@ -43,13 +43,13 @@
             <h2>Which one is your pasta?</h2>
             <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
             <div class="gallery">
-              <div class="frame">
+              <div class="frame option">
                 <img src="" alt="">
               </div>
-              <div class="frame">
+              <div class="frame option">
                 <img src="" alt="">
               </div>
-              <div class="frame">
+              <div class="frame option">
                 <img src="" alt="">
               </div>
             </div>
@@ -183,7 +183,7 @@
 
       $(document).ready(function () {
         showBoard();
-        $('#scene-desc').show();
+        $('#scene-start').show();
 
         $('.btn-start').click(function () {
           // hideBoard();
@@ -195,6 +195,10 @@
         })
         $('.btn-end').click(function () {
           endScene(this);
+        })
+        $('.option').click(function () {
+          $(this).parent('.gallery').find('.option').removeClass('option-selected');
+          $(this).addClass('option-selected');
         })
       })
     </script>
