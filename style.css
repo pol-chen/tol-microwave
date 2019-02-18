@@ -125,6 +125,10 @@ main {
   background: #117B71;
 }
 
+.scene .icon {
+  margin-bottom: 24px;
+}
+
 .scene .icon i {
   width: 120px;
   height: 120px;
