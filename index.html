@@ -147,6 +147,7 @@
             <p>Let's do some practice to see if you master how microwave ovens work!</p>
             <a class="btn-continue" data-next="#scene-question-1"><i class="fas fa-arrow-circle-right"></i>Continue</a>
           </div>
+
           <div id="scene-question-1" class="scene scene-question">
             <h2>Question 1</h2>
             <p>Microwaves are electric waves that could NOT penetrate?</p>
@@ -351,6 +352,7 @@
       }
       function continueScene(el) {
         var next = $(el).data('next');
+        console.log(next);
         $(el).parent('.scene').fadeOut(function () {
           $(next).fadeIn(function () {
             if (next.includes('scene-timer')) {
@@ -382,7 +384,7 @@
 
       $(document).ready(function () {
         showBoard();
-        $('#scene-start').show();
+        $('#scene-title-practice').show();
 
         $('.btn-start').click(function () {
           // hideBoard();
@@ -398,6 +400,11 @@
         $('.option').click(function () {
           $(this).parent('.gallery').find('.option').removeClass('option-selected');
           $(this).addClass('option-selected');
+        })
+        $('.gallery-v .option').click(function () {
+          var next = $(this).data('next');
+          var $btn = $(this).parent('.gallery-v').parent('.scene').find('.btn-continue');
+          $btn.data('next', next);
         })
       })
     </script>
