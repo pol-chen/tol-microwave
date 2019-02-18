@@ -17,13 +17,21 @@
 
       <main>
         <div id="board">
+          <div id="scene-start" class="scene">
+            <div class="icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h2>Are You Ready?</h2>
+            <p>You have completed the course. Now you can show off to your friends how a microwave oven works!</p>
+            <a class="btn-start"><i class="far fa-play-circle"></i>Start</a>
+          </div>
           <div id="scene-end" class="scene">
             <div class="icon">
               <i class="fas fa-glass-cheers"></i>
             </div>
             <h2>Congratulation!!!</h2>
             <p>You have completed the course. Now you can show off to your friends how a microwave oven works!</p>
-            <a class="btn-restart"><i class="fas fa-share-alt"></i>Share</a>
+            <a class="btn-share"><i class="fas fa-share-alt"></i>Share</a>
           </div>
           <div id="scene-answer" class="scene">
             <h2>Justify your answer</h2>
@@ -75,12 +83,6 @@
             <h2>Experiment Time!!!</h2>
             <p>Following we will do an experiment to see how the conatiner would affect microwave oven heating.</p>
             <a class="btn-continue">Continue</a>
-          </div>
-          <div id="scene-start" class="scene">
-            <a id="btn-start">Start</a>
-          </div>
-          <div class="scene">
-            <a id="btn-second">2nd Scene</a>
           </div>
         </div>
         <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
@@ -144,8 +146,11 @@
       function showBoard() {
         $('#board').show();
       }
+      function startScene(scene) {
+        $(scene).fadeIn();
+      }
       function endScene(el) {
-        $(el).parent('.scene').hide();
+        $(el).parent('.scene').fadeOut();
       }
 
       function triggerScene() {
@@ -153,10 +158,17 @@
         showBoard();
       }
 
+      function initScenes() {
+        $('.scene').hide();
+        $('#scene-start').show();
+      }
+
       $(document).ready(function () {
-        $('#btn-start').click(function () {
-          hideBoard();
-          playVideo();
+        initScenes();
+
+        $('.btn-start').click(function () {
+            // hideBoard();
+            // playVideo();
           endScene(this);
         })
       })
