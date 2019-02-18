@@ -292,6 +292,7 @@
       var videoTime = 0;
       var timeUpdater = null;
       var showingBoard = false;
+      var justShowedBoard = false;
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         // event.target.playVideo();
@@ -310,7 +311,7 @@
       // when the time changes, this will be called.
       function onProgress(currentTime) {
         console.log(currentTime);
-        if(currentTime >= 120 && currentTime < 120.1 && !showingBoard) {
+        if(currentTime >= 120 && currentTime < 121 && !showingBoard && !justShowedBoard) {
           console.log("Trigger");
           triggerScenePizza();
         }
@@ -339,11 +340,15 @@
         $('.scene').hide();
         $('#board').hide();
         showingBoard = false;
+        setTimeout(function () {
+          justShowedBoard = false;
+        }, 2000);
       }
       function showBoard() {
         $('.scene').hide();
         $('#board').show();
         showingBoard = true;
+        justShowedBoard = true;
       }
       function startScene(scene) {
         $(scene).fadeIn(function () {
