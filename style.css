@@ -251,6 +251,10 @@ main {
   }
 }
 
+#sound {
+  display: none;
+}
+
 #player {
 }
 

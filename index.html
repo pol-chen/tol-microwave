@@ -16,6 +16,7 @@
       </header>
 
       <main>
+        <audio id="sound" src="sound.mov" preload="auto"></audio>
         <div id="board">
           <div id="scene-start" class="scene">
             <div class="icon">
@@ -202,8 +203,7 @@
         $(el).parent('.scene').fadeOut(function () {
           $(next).fadeIn(function () {
             if (next.includes('scene-timer')) {
-              var audio = new Audio('sound.mov');
-              audio.play();
+              document.getElementById('sound').play();
               setTimeout(continueScene, 4000, $(next).find('.btn-continue'));
             }
           });
