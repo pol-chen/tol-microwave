@@ -124,13 +124,15 @@ main {
 .scene a:hover {
   background: #117B71;
 }
+.scene a i {
+  padding-right: 6px;
+}
 
 .scene .icon {
   margin-bottom: 24px;
 }
 
 .scene .icon i {
-  width: 120px;
   height: 120px;
   color: #26A69A;
   font-size: 120px;
