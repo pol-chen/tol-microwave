@@ -83,9 +83,9 @@
           <div id="scene-answer-pasta" class="scene scene-answer">
             <h2>Justify Your Answer</h2>
             <p>Why do you choose the option?</p>
-            <textarea rows="4" placeholder="Explain why you think your answer is right."></textarea>
+            <textarea class="input-answer" rows="4" placeholder="Explain why you think your answer is right."></textarea>
             <p>Now let's watch the following video and check your answer!</p>
-            <a class="btn-end"><i class="fas fa-magic"></i>Check It Out</a>
+            <a class="btn-continue btn-disabled"><i class="fas fa-magic"></i>Check It Out</a>
           </div>
 
           <div id="scene-title-pizza" class="scene scene-title">
@@ -136,9 +136,9 @@
           <div id="scene-answer-pizza" class="scene scene-answer">
             <h2>Justify Your Answer</h2>
             <p>Why do you choose the option?</p>
-            <textarea rows="4" placeholder="Explain why you think your answer is right."></textarea>
+            <textarea class="input-answer" rows="4" placeholder="Explain why you think your answer is right."></textarea>
             <p>Now let's watch the following video and check your answer!</p>
-            <a class="btn-end"><i class="fas fa-magic"></i>Check It Out</a>
+            <a class="btn-continue btn-disabled"><i class="fas fa-magic"></i>Check It Out</a>
           </div>
 
           <div id="scene-title-practice" class="scene scene-title">
@@ -352,6 +352,7 @@
         showingBoard = true;
         justShowedBoard = true;
       }
+
       function startScene(scene) {
         $(scene).fadeIn(function () {
           pauseVideo(); // For sure
@@ -375,6 +376,7 @@
           playVideo();
         });
       }
+
       function triggerScenePizza() {
         pauseVideo();
         showBoard();
@@ -391,7 +393,7 @@
 
       $(document).ready(function () {
         showBoard();
-        $('#scene-start').show();
+        $('#scene-answer-pizza').show();
 
         $('.btn-start').click(function () {
           // hideBoard();
@@ -415,6 +417,14 @@
           var $btn = $(this).parent('.select').parent('.scene').find('.btn-continue');
           $btn.removeClass('btn-disabled');
           $btn.data('next', next);
+        })
+        $('.input-answer').on('change keyup paste', function() {
+          var $btn = $(this).parent('.scene').find('.btn-continue');
+          if ($(this).val().length === 0) {
+            $btn.addClass('btn-disabled');
+          } else {
+            $btn.removeClass('btn-disabled');
+          }
         })
       })
     </script>
