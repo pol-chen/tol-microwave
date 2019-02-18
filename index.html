@@ -163,9 +163,31 @@
         });
       }
 
+      var videoTime = 0;
+      var timeUpdater = null;
+      var showingBoard = false;
       // 4. The API will call this function when the video player is ready.
       function onPlayerReady(event) {
         // event.target.playVideo();
+        function updateTime() {
+          var oldTime = videoTime;
+          if(player && player.getCurrentTime) {
+            videoTime = player.getCurrentTime();
+          }
+          if(videoTime !== oldTime) {
+            onProgress(videoTime);
+          }
+        }
+        timeUpdater = setInterval(updateTime, 100);
+      }
+
+      // when the time changes, this will be called.
+      function onProgress(currentTime) {
+        console.log(currentTime);
+        if(currentTime >= 10 && currentTime < 10.1 && !showingBoard) {
+          console.log("Trigger");
+          triggerScenePizza();
+        }
       }
 
       // 5. The API calls this function when the player's state changes.
@@ -174,10 +196,10 @@
       var done = false;
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(triggerScenePizza, 6000);
+          // setTimeout(triggerScenePizza, 6000);
           done = true;
         } else if (event.data == YT.PlayerState.ENDED) {
-          setTimeout(triggerScenePractice, 100);
+          setTimeout(triggerScenePractice, 0);
         }
       }
       function playVideo() {
@@ -190,13 +212,17 @@
       function hideBoard() {
         $('.scene').hide();
         $('#board').hide();
+        showingBoard = false;
       }
       function showBoard() {
         $('.scene').hide();
         $('#board').show();
+        showingBoard = true;
       }
       function startScene(scene) {
-        $(scene).fadeIn();
+        $(scene).fadeIn(function () {
+          pauseVideo(); // For sure
+        });
       }
       function continueScene(el) {
         var next = $(el).data('next');
