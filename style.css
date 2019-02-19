@@ -198,7 +198,9 @@ main {
 }
 
 .scene .gallery .option {
+  display: flex;
   border: 3px solid #FFFBF0;
+  background: #FFFBF0;
   cursor: pointer;
 }
 
@@ -207,9 +209,15 @@ main {
 }
 
 .scene .gallery .option p {
+  align-self: center;
   width: 100%;
   margin: 0;
   padding: 6px;
+  box-sizing: border-box;
+}
+
+.scene .gallery .option p span {
+  color: #26A69A;
 }
 
 .scene .gallery-v {
