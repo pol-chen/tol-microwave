@@ -32,7 +32,7 @@
             </div>
             <h2>Congratulation!!!</h2>
             <p>You have completed the course. Now you can show off to your friends how a microwave oven works!</p>
-            <a class="btn-share"><i class="fas fa-share-alt"></i>Share</a>
+            <a class="btn-share"><i class="fab fa-twitter"></i>Share</a>
           </div>
 
           <div id="scene-title-pasta" class="scene scene-title">
@@ -438,6 +438,14 @@
         })
         $('.btn-end').click(function () {
           endScene(this);
+        })
+        $('.btn-share').click(function () {
+          var url = "https://polarischen.github.io/tol-microwave/";
+          var text = "Do you know how microwave ovens work? Check this out! 😉";
+          var twitterWindow = window.open('https://twitter.com/share?url=' + url + '&text=' + text, 'twitter-popup', 'height=350, width=600');
+          if (twitterWindow.focus) {
+            twitterWindow.focus();
+          }
         })
         $('.option').click(function () {
           $(this).parent('.gallery').find('.option').removeClass('option-selected');
