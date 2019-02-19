@@ -223,6 +223,7 @@ main {
 .scene .gallery-v {
   flex-direction: column;
   align-items: center;
+  width: 740px;
   height: auto;
 }
 
