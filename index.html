@@ -314,7 +314,7 @@
         player = new YT.Player('player', {
           height: '640',
           width: '900',
-          videoId: '1IEW35GW-nc',
+          videoId: '0N9McnK2kh0',
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -344,7 +344,7 @@
       // when the time changes, this will be called.
       function onProgress(currentTime) {
         console.log(currentTime);
-        if(currentTime >= 120 && currentTime < 121 && !showingBoard && !justShowedBoard) {
+        if(currentTime >= 129 && currentTime < 130 && !showingBoard && !justShowedBoard) {
           console.log("Trigger");
           triggerScenePizza();
         }
