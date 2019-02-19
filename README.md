@@ -4,15 +4,15 @@
 
 This project is for **Tools for Online Learning** at CMU.
 
-Part of the code is modified from the demo code on YouTube Player API page.
+Part of the code is modified from the demo code on [YouTube Player API](https://developers.google.com/youtube/iframe_api_reference) page.
 
 The project uses these following libraries:
 
-- ![jQuery](https://jquery.com/)
+- [jQuery](https://jquery.com/)
 
-- ![Font Awesome](https://fontawesome.com/)
+- [Font Awesome](https://fontawesome.com/)
 
-Thanks Dr. Chinmay and Mohammed for creating such a wonderful course.
+Thanks **Dr. Chinmay Kulkarni** and **Mohammed Alburaiki** for creating such a wonderful course.
 
 ## References
 
