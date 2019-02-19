@@ -274,7 +274,7 @@ main {
   }
 }
 
-#sound {
+#sound, #ending {
   display: none;
 }
 
