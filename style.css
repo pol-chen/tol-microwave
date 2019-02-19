@@ -57,7 +57,7 @@ html {
 }
 
 .wrapper {
-  width: 840px;
+  width: 900px;
   margin: 0 auto;
 }
 
@@ -84,7 +84,7 @@ p.desc {
 main {
   position: relative;
   width: 100%;
-  height: 540px;
+  height: 640px;
   margin: 24px 0;
   border-radius: 8px;
   overflow: hidden;
@@ -166,6 +166,13 @@ main {
   font-size: 16px;
   line-height: 28px;
   text-align: center;
+}
+
+.scene .small {
+  font-size: 12px;
+  font-style: italic;
+  line-height: 16px;
+  color: #888888;
 }
 
 .scene .gallery {

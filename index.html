@@ -312,8 +312,8 @@
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          height: '540',
-          width: '840',
+          height: '640',
+          width: '900',
           videoId: '1IEW35GW-nc',
           events: {
             'onReady': onPlayerReady,
@@ -424,7 +424,7 @@
 
       $(document).ready(function () {
         showBoard();
-        $('#scene-question-pizza').show();
+        $('#scene-start').show();
 
         $('.btn-start').click(function () {
           // hideBoard();
